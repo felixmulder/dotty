@@ -144,6 +144,52 @@ object DottyBuild extends Build {
       addCommandAlias("partest-only-no-bootstrap", ";test:package;package;                        lockPartestFile;test:test-only dotc.tests;runPartestRunner")
     )
 
+  lazy val dottydoc = project.in(file("src/dottydoc")).
+    dependsOn(dotty).
+    settings(
+      scalaSource in Compile := baseDirectory.value / "src",
+      javaSource in Compile := baseDirectory.value / "src",
+      libraryDependencies ++= Seq("org.scala-lang.modules" %% "scala-xml" % "1.0.1",
+                                  "org.scala-lang.modules" %% "scala-partest" % "1.0.11" % "test",
+                                  "com.novocode" % "junit-interface" % "0.11" % "test",
+                                  "jline" % "jline" % "2.12"),
+
+      // enable improved incremental compilation algorithm
+      incOptions := incOptions.value.withNameHashing(true),
+
+      mainClass in (Compile, run) := Some("dotty.tools.dottydoc.DottyDoc"),
+      fork in run := true,
+      fork in Test := true,
+      parallelExecution in Test := false,
+
+      // http://grokbase.com/t/gg/simple-build-tool/135ke5y90p/sbt-setting-jvm-boot-paramaters-for-scala
+      javaOptions <++= (dependencyClasspath in Runtime, packageBin in Compile) map { (attList, bin) =>
+        // put the Scala {library, reflect} in the classpath
+        val path = for {
+          file <- attList.map(_.data)
+          path = file.getAbsolutePath
+        } yield "-Xbootclasspath/p:" + path
+        // dotty itself needs to be in the bootclasspath
+        val fullpath = ("-Xbootclasspath/a:" + bin) :: path.toList
+        // System.err.println("BOOTPATH: " + fullpath)
+
+        val travis_build = // propagate if this is a travis build
+          if (sys.props.isDefinedAt(JENKINS_BUILD))
+            List(s"-D$JENKINS_BUILD=${sys.props(JENKINS_BUILD)}") ::: jenkinsMemLimit
+          else
+            List()
+
+        val tuning =
+          if (sys.props.isDefinedAt("Oshort"))
+            // Optimize for short-running applications, see https://github.com/lampepfl/dotty/issues/222
+            List("-XX:+TieredCompilation", "-XX:TieredStopAtLevel=1")
+          else
+            List()
+
+        ("-DpartestParentID=" + pid) :: tuning ::: agentOptions ::: travis_build ::: fullpath
+      }
+    )
+
   lazy val `dotty-bench` = project.in(file("bench")).
     dependsOn(dotty % "compile->test").
     settings(
