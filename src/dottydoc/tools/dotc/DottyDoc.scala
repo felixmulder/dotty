@@ -6,6 +6,7 @@ import dotty.tools.dotc.Driver
 import dotty.tools.dotc.core.Phases.Phase
 import dotty.tools.dotc.core.Contexts.Context
 import dotty.tools.dotc.typer.FrontEnd
+import dotty.tools.dotc.ast.Trees._
 
 /** Custom Compiler with phases for the documentation tool
  *
@@ -28,8 +29,17 @@ case object DottyDocCompiler extends Compiler {
 class JsonPhase extends Phase {
   def phaseName = "JsonPhase"
 
-  def run(implicit ctx: Context): Unit =
-    println("In the JSON Phase yo")
+  def collect(tree: Tree[_]): List[String] = tree match {
+    case PackageDef(pid, st) => pid.name.toString +: st.flatMap(collect)
+    case cls @ TypeDef(name, rhs) if cls.isClassDef => List(name.toString)
+    case TypeDef(name, rhs) => List("def " + name)
+    case x => List("class: " + x.getClass)
+  }
+
+  def run(implicit ctx: Context): Unit = {
+    val tree = collect(ctx.compilationUnit.tpdTree)
+    println(tree)
+  }
 }
 
 object DottyDoc extends Driver {
