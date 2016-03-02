@@ -1,8 +1,7 @@
 package dotty.tools
 package dottydoc
 
-import dotty.tools.dotc.Compiler
-import dotty.tools.dotc.Driver
+import dotty.tools.dotc.{Compiler, CompilationUnit, Driver}
 import dotty.tools.dotc.core.Phases.Phase
 import dotty.tools.dotc.core.Contexts.Context
 import dotty.tools.dotc.typer.FrontEnd
@@ -27,18 +26,23 @@ case object DottyDocCompiler extends Compiler {
 }
 
 class JsonPhase extends Phase {
+  import model.Entities._
   def phaseName = "JsonPhase"
 
-  def collect(tree: Tree[_]): List[String] = tree match {
-    case PackageDef(pid, st) => pid.name.toString +: st.flatMap(collect)
-    case cls @ TypeDef(name, rhs) if cls.isClassDef => List(name.toString)
-    case TypeDef(name, rhs) => List("def " + name)
-    case x => List("class: " + x.getClass)
+  def collect(tree: Tree[_]): Entity = tree match {
+    case PackageDef(pid, st) => Package(pid.name.toString, st.map(collect))
+    case cls @ TypeDef(name, rhs) if cls.isClassDef => Class(name.toString)
   }
 
   def run(implicit ctx: Context): Unit = {
+    println("run called")
     val tree = collect(ctx.compilationUnit.tpdTree)
     println(tree)
+  }
+
+  override def runOn(units: List[CompilationUnit])(implicit ctx: Context): List[CompilationUnit] = {
+    println("runOn called!")
+    super.runOn(units)
   }
 }
 
