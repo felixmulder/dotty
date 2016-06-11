@@ -193,3 +193,13 @@ title: Dotty
          .. code-block:: bordered
 
              addSbtPlugin("com.felixmulder" % "sbt-dotty" % "0.1")
+
+.. raw:: html
+
+    <!-- some reveal effects -->
+    <script src="https://cdn.jsdelivr.net/scrollreveal.js/3.1.4/scrollreveal.min.js"></script>
+    <script>
+        window.sr = ScrollReveal();
+        sr.reveal(".scala-logo-container",  { duration: 2000, delay: 100 });
+        sr.reveal(".contributor",  { duration: 500, delay: 100 });
+    </script>
