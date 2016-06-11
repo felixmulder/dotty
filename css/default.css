@@ -40,6 +40,19 @@ div.page > div.centered.questions > h1+p {
     margin-bottom: 64px;
 }
 
+div.page.blue a {
+    color: #f26527;
+}
+
+div.page.blue a:focus,
+div.page.blue a:hover {
+    color: #da4323;
+}
+
+div.page.blue a:visited {
+    color: #f26527;
+}
+
 div.page.blue > div.questions > div.contributor {
     float: left;
     display: inline;
