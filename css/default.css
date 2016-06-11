@@ -1,4 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Droid+Sans);
+@import url(https://fonts.googleapis.com/css?family=Lobster);
 @import url(https://fonts.googleapis.com/css?family=Raleway:700);
 @import url(https://fonts.googleapis.com/css?family=Lato:700);
 @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700,900);
@@ -18,23 +19,48 @@ div.page {
     padding: 15px 10px;
 }
 
+div.page.larger-page {
+    height: 100%;
+}
+
 div.page > div.centered {
-    max-width: 600px;
+    max-width: 640px;
     margin: 0 auto;
+}
+
+div.page > div.centered.questions > h1 {
+    font-family: 'Lobster', sans-serif;
+    font-size: 4em;
+    text-align: center;
+    margin: 32px 0 24px;
+}
+
+div.page > div.centered.questions > h1+p {
+    margin-bottom: 64px;
+}
+
+div.page.blue > div.questions > div.contributor {
+    float: left;
+    display: inline;
+    width: 100px;
+}
+
+div.page.blue > div.questions > div.contributor > p {
+    text-align: center;
+    font-size: 12px;
+}
+
+div.page.blue > div.questions > div.contributor > p > img {
+    width: 100%;
+    border-radius: 50%;
+}
+
+div.page.blue > div.questions > div.contributor+div {
+    margin-left: 24px;
 }
 
 div.page > div.centered > h2 {
     margin: 32px 0;
-}
-
-.red {
-    background: #de332e;
-    color: #fff;
-}
-
-.white {
-    background: #fff;
-    color: #000;
 }
 
 nav.nav {
@@ -92,4 +118,37 @@ pre.sourceCode.bordered {
 
 h1#getting-started {
     margin-top: 25px;
+}
+
+div.centered-table > table {
+    width: 100%;
+}
+
+/* Decorator classes */
+.centered-text {
+    text-align: center;
+    clear: both;
+}
+
+.no-top-padding {
+    padding-top: 0 !important;
+}
+
+.page.no-top-padding {
+    margin-top: -32px;
+}
+
+.red {
+    background: #de332e;
+    color: #fff;
+}
+
+.white {
+    background: #fff;
+    color: #000;
+}
+
+.blue {
+    background: #002B36;
+    color: #fff;
 }

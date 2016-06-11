@@ -24,6 +24,129 @@ title: Dotty
             </i>
         </div>
 
+.. class:: page blue larger-page
+
+    .. class:: centered questions
+
+        =============
+        \- Why Dotty?
+        =============
+
+        Dotty is a platform to try out new language concepts and compiler
+        technologies for Scala. The focus is mainly on simplification. We
+        remove extraneous syntax (e.g. no XML literals), and try to boil down
+        Scala's types into a smaller set of more fundamental constructors. The
+        theory behind these constructors is researched in
+        `DOT<http://www.cs.uwm.edu/~boyland/fool2012/papers/fool2012_submission_3.pdf>`_,
+        a calculus for dependent object types.
+
+        =============================
+        \- Is it the future of Scala?
+        =============================
+
+        Yes, it will be - eventually.
+
+        =======================
+        \- Who's working on it?
+        =======================
+
+        .. class:: contributor
+
+            .. image:: /images/martin.jpg
+            Martin Odersky
+
+        .. class:: contributor
+
+            .. image:: /images/petrashko.png
+            Dmitry Petrashko
+
+        .. class:: contributor
+
+            .. image:: /images/smarter.jpg
+            Guillaume Martres
+
+        .. class:: contributor
+
+            .. image:: /images/fengyun.png
+            Liu Fengyun
+
+        .. class:: contributor
+
+            .. image:: /images/felix.jpeg
+            Felix Mulder
+
+
+        .. class:: centered-text
+        And a long line of `contributors<https://github.com/lampepfl/dotty/graphs/contributors>`_!
+
+        ================
+        \- Can I use it?
+        ================
+
+        `You can!<#getting-started>`_ But it currently comes with no guarantees
+        of stability and correctness.
+
+        ================
+        \- So, features?
+        ================
+
+        .. class:: centered-table
+        +----------------------------------------------------------------------------------------------------------+---------------------+
+        | Union, intersection and `literal singleton types<http://docs.scala-lang.org/sips/pending/42.type.html>`_ | Implemented         |
+        +----------------------------------------------------------------------------------------------------------+---------------------+
+        | Fast compilation (phase fusion)                                                                          | Implemented         |
+        +----------------------------------------------------------------------------------------------------------+---------------------+
+        | `Trait parameters<http://docs.scala-lang.org/sips/pending/trait-parameters.html>`_                       | Implemented         |
+        +----------------------------------------------------------------------------------------------------------+---------------------+
+        | `@static methods and fields<https://github.com/scala/scala.github.com/pull/491>`_                        | Implemented         |
+        +----------------------------------------------------------------------------------------------------------+---------------------+
+        | Improved REPL with colors                                                                                | Implemented         |
+        +----------------------------------------------------------------------------------------------------------+---------------------+
+        | Sbt incremental build                                                                                    | Implemented         |
+        +----------------------------------------------------------------------------------------------------------+---------------------+
+        | Non-blocking lazy vals                                                                                   | Implemented         |
+        +----------------------------------------------------------------------------------------------------------+---------------------+
+        | Option-less pattern matching (based on `name-based patmat<https://github.com/scala/scala/pull/2848>`_)   | Implemented         |
+        +----------------------------------------------------------------------------------------------------------+---------------------+
+        | Function arity adaptation                                                                                | Implemented         |
+        +----------------------------------------------------------------------------------------------------------+---------------------+
+        | Multiversal equality                                                                                     | Implemented         |
+        +----------------------------------------------------------------------------------------------------------+---------------------+
+        |                                                                                                          |                     |
+        +----------------------------------------------------------------------------------------------------------+---------------------+
+        | Non-boxed arrays of value classes                                                                        | In progress         |
+        +----------------------------------------------------------------------------------------------------------+---------------------+
+        | Working contravariant implicits                                                                          | In progress         |
+        +----------------------------------------------------------------------------------------------------------+---------------------+
+        | `Auto-Specialization<https://github.com/dotty-linker/dotty>`_                                            | In progress         |
+        +----------------------------------------------------------------------------------------------------------+---------------------+
+        | `Whole program optimizer<https://github.com/dotty-linker/dotty>`_                                        | In progress         |
+        +----------------------------------------------------------------------------------------------------------+---------------------+
+        |                                                                                                          |                     |
+        +----------------------------------------------------------------------------------------------------------+---------------------+
+        | HList & HMaps/Record types                                                                               | Considered          |
+        +----------------------------------------------------------------------------------------------------------+---------------------+
+        | Implicit functions                                                                                       | Considered          |
+        +----------------------------------------------------------------------------------------------------------+---------------------+
+        | Effects                                                                                                  | Considered          |
+        +----------------------------------------------------------------------------------------------------------+---------------------+
+        | Auto-completion in repl                                                                                  | Considered          |
+        +----------------------------------------------------------------------------------------------------------+---------------------+
+        | Spec Option-less pattern matching                                                                        | Considered          |
+        +----------------------------------------------------------------------------------------------------------+---------------------+
+        | Exhaustivity checks in pattern matching                                                                  | Considered          |
+        +----------------------------------------------------------------------------------------------------------+---------------------+
+
+        The complete list is available
+        `here<https://github.com/lampepfl/dotty#what-are-the-features-that-could-make-me-consider-trying-it>`_.
+
+        =========================
+        \- I have more questions!
+        =========================
+
+        That's great! We have more details on the `Github
+        Wiki<https://github.com/lampepfl/dotty/wiki>`_ and please join our `Gitter channel<https://gitter.im/lampepfl/dotty>`_!
+
 
 .. class:: page white
 
