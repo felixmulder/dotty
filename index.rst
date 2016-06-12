@@ -69,9 +69,9 @@ title: Dotty
         `DOT<https://infoscience.epfl.ch/record/215280>`_,
         a calculus for dependent object types.
 
-        ==========================
-        Is it the future of Scala?
-        ==========================
+        =======================
+        Is it the future Scala?
+        =======================
 
         .. class:: centered-text
 
@@ -124,7 +124,7 @@ title: Dotty
         .. class:: centered-text
 
             `You can!<#getting-started>`_ But it currently comes with no guarantees
-            of stability and correctness.
+            of stability.
 
         =============
         So, features?
