@@ -5,6 +5,14 @@
 @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700,900);
 
 html, body {
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+body {
     height: 100%;
     width: 100%;
     margin: 0;
@@ -12,11 +20,14 @@ html, body {
     background: #de332e;
     font-family: 'Source Sans Pro', sans-serif;
     overflow-x: hidden;
-    box-sizing: border-box;
 }
 
-*, *:before, *:after {
-    box-sizing: inherit;
+div#header {
+    height: 59px;
+    width: 100%;
+    z-index: 1;
+    position: relative;
+    overflow: hidden;
 }
 
 div.page {
@@ -65,23 +76,32 @@ div.page.blue > div.questions > div.contributors {
     margin: 0 auto;
 }
 
-div.page.blue > div.questions > div.contributors > div.contributor {
+div.page.blue > div.questions > div.contributors > div.contributors-cell {
+    float: left;
+    display: inline;
+}
+
+div.page.blue > div.questions > div.contributors > div.contributors-cell+div.contributors-cell {
+    margin-left: 24px;
+}
+
+div.page.blue > div.questions > div.contributors > div.contributors-cell > div.contributor {
     float: left;
     display: inline;
     width: 100px;
 }
 
-div.page.blue > div.questions > div.contributors > div.contributor > p {
+div.page.blue > div.questions > div.contributors > div.contributors-cell > div.contributor > p {
     text-align: center;
     font-size: 12px;
 }
 
-div.page.blue > div.questions > div.contributors > div.contributor > p > img {
+div.page.blue > div.questions > div.contributors > div.contributors-cell > div.contributor > p > img {
     width: 100%;
     border-radius: 50%;
 }
 
-div.page.blue > div.questions > div.contributors > div.contributor+div {
+div.page.blue > div.questions > div.contributors > div.contributors-cell > div.contributor+div {
     margin-left: 24px;
 }
 
@@ -121,6 +141,7 @@ h1#dotty {
     font-weight: 700;
     text-align: center;
     font-size: 3.5em;
+    margin-top: -40px;
 }
 
 div.centered-subtitle {
@@ -136,7 +157,11 @@ div.scroll-down-container {
     text-align: center;
 }
 
-div.scroll-down-container > i#scroll-down-arrow {
+div.scroll-down-container > a {
+    color: #fff;
+}
+
+div.scroll-down-container > a > i#scroll-down-arrow {
     font-size: 3em;
 }
 
@@ -215,15 +240,30 @@ and (-webkit-device-pixel-ratio: 2)
         width: 338px;
     }
 
-    div.page.blue > div.questions > div.contributors > div.contributor {
+    div.page.blue > div.questions > div.contributors > div.contributors-cell {
+        float: none;
+        display: block;
+        width: 194px;
+        margin: 0 auto;
+    }
+
+    div.page.blue > div.questions > div.contributors > div.contributors-cell+div.contributors-cell {
+        float: none;
+        display: block;
+        width: 122px;
+        margin: 0 auto;
+    }
+
+    div.page.blue > div.questions > div.contributors > div.contributors-cell > div.contributor {
         width: 50px;
     }
 
-    div.page.blue > div.questions > div.contributors > div.contributor+div {
+    div.page.blue > div.questions > div.contributors > div.contributors-cell > div.contributor+div {
         margin-left: 22px;
     }
 
     div.scala-logo-container {
+        margin-top: -25px;
         width: 80%;
         height: 80%;
     }
@@ -237,10 +277,6 @@ and (-webkit-device-pixel-ratio: 2)
     div.centered-table > table > tbody > tr > td:nth-child(2) {
         font-size: 0.8em;
         text-align: right;
-    }
-
-    div#header {
-        width: 100%;
     }
 
     div#header > nav.nav {

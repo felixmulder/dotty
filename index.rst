@@ -47,18 +47,20 @@ title: Dotty
     .. raw:: html
 
         <div class="scroll-down-container">
-            <i id="scroll-down-arrow" class="animated infinite pulse material-icons">
-                expand_more
-            </i>
+            <a href="#why-dotty">
+                <i id="scroll-down-arrow" class="animated infinite pulse material-icons">
+                    expand_more
+                </i>
+            </a>
         </div>
 
 .. class:: page blue
 
     .. class:: centered questions
 
-        =============
-        \- Why Dotty?
-        =============
+        ==========
+        Why Dotty?
+        ==========
 
         Dotty is a platform to try out new language concepts and compiler
         technologies for Scala. The focus is mainly on simplification. We
@@ -68,62 +70,66 @@ title: Dotty
         `DOT<https://infoscience.epfl.ch/record/215280>`_,
         a calculus for dependent object types.
 
-        =============================
-        \- Is it the future of Scala?
-        =============================
+        ==========================
+        Is it the future of Scala?
+        ==========================
 
         .. class:: centered-text
 
             Yes, it will be - eventually.
 
-        =======================
-        \- Who's working on it?
-        =======================
+        ====================
+        Who's working on it?
+        ====================
 
         .. class:: contributors
 
-            .. class:: contributor
+            .. class:: contributors-cell
 
-                .. image:: /images/martin.jpg
-                Martin Odersky
+                .. class:: contributor
 
-            .. class:: contributor
+                    .. image:: /images/martin.jpg
+                    Martin Odersky
 
-                .. image:: /images/petrashko.png
-                Dmitry Petrashko
+                .. class:: contributor
 
-            .. class:: contributor
+                    .. image:: /images/petrashko.png
+                    Dmitry Petrashko
 
-                .. image:: /images/smarter.jpg
-                Guillaume Martres
+                .. class:: contributor
 
-            .. class:: contributor
+                    .. image:: /images/smarter.jpg
+                    Guillaume Martres
 
-                .. image:: /images/fengyun.png
-                Liu Fengyun
+            .. class:: contributors-cell
 
-            .. class:: contributor
+                .. class:: contributor
 
-                .. image:: /images/felix.jpeg
-                Felix Mulder
+                    .. image:: /images/fengyun.png
+                    Liu Fengyun
+
+                .. class:: contributor
+
+                    .. image:: /images/felix.jpeg
+                    Felix Mulder
 
 
         .. class:: centered-text
 
         And a long line of `contributors!<https://github.com/lampepfl/dotty/graphs/contributors>`_
 
-        ================
-        \- Can I use it?
-        ================
+        =============
+        Can I use it?
+        =============
 
         .. class:: centered-text
 
             `You can!<#getting-started>`_ But it currently comes with no guarantees
             of stability and correctness.
 
-        ================
-        \- So, features?
-        ================
+        =============
+        So, features?
+        =============
 
         .. class:: centered-table
         +----------------------------------------------------------------------------------------------------------+---------------------+
@@ -175,9 +181,9 @@ title: Dotty
         The complete list is available
         `here<https://github.com/lampepfl/dotty#what-are-the-features-that-could-make-me-consider-trying-it>`_.
 
-        =========================
-        \- I have more questions!
-        =========================
+        ======================
+        I have more questions!
+        ======================
 
         .. class:: centered-text
 
@@ -231,12 +237,3 @@ title: Dotty
          .. code-block:: bordered
 
              addSbtPlugin("com.felixmulder" % "sbt-dotty" % "0.1")
-
-.. raw:: html
-
-    <!-- some reveal effects -->
-    <script src="https://cdn.jsdelivr.net/scrollreveal.js/3.1.4/scrollreveal.min.js"></script>
-    <script>
-        window.sr = ScrollReveal();
-        sr.reveal(".scala-logo-container",  { duration: 2000, delay: 100, mobile: false });
-    </script>
