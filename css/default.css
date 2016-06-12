@@ -128,7 +128,9 @@ li.nav-item > a.nav-link {
 div.scala-logo-container {
     width: 600px;
     height: 600px;
-    margin: 0 auto;
+    margin: auto;
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
 }
 
 div.scala-logo-container > p {
@@ -141,27 +143,23 @@ h1#dotty {
     font-weight: 700;
     text-align: center;
     font-size: 3.5em;
-    margin-top: -40px;
+    margin-top: 20px;
 }
 
 div.centered-subtitle {
     text-align: center;
     font-family: 'Source Sans Pro', sans-serif;
-}
-
-div.scroll-down-container {
     position: absolute;
     bottom: 0;
     left: 0;
-    width: 100%;
-    text-align: center;
+    right: 0;
 }
 
-div.scroll-down-container > a {
+div.centered-subtitle > a {
     color: #fff;
 }
 
-div.scroll-down-container > a > i#scroll-down-arrow {
+div.centered-subtitle > a > i#scroll-down-arrow {
     font-size: 3em;
 }
 
@@ -263,7 +261,6 @@ and (-webkit-device-pixel-ratio: 2)
     }
 
     div.scala-logo-container {
-        margin-top: -25px;
         width: 80%;
         height: 80%;
     }

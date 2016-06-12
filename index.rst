@@ -35,24 +35,23 @@ title: Dotty
     .. class:: scala-logo-container
     .. image:: /images/scala-logo.svg
 
-    =====
-    Dotty
-    =====
 
     .. class:: centered-subtitle
+
+        =====
+        Dotty
+        =====
 
         A next generation compiler for Scala
 
 
-    .. raw:: html
+        .. raw:: html
 
-        <div class="scroll-down-container">
             <a href="#why-dotty">
                 <i id="scroll-down-arrow" class="animated infinite pulse material-icons">
                     expand_more
                 </i>
             </a>
-        </div>
 
 .. class:: page blue
 
