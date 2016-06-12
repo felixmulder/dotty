@@ -11,17 +11,24 @@ html, body {
     padding: 0;
     background: #de332e;
     font-family: 'Source Sans Pro', sans-serif;
+    overflow-x: hidden;
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
 }
 
 div.page {
-    height: 100vh;
+    min-height: 100vh;
     width: 100%;
     padding: 15px 10px;
     min-width: 700px;
+    position: relative;
 }
 
-div.page.larger-page {
-    height: 100%;
+div.page.exactly-one-page {
+    max-height: 100vh;
 }
 
 div.page > div.centered {
@@ -53,23 +60,28 @@ div.page.blue a:visited {
     color: #f26527;
 }
 
-div.page.blue > div.questions > div.contributor {
+div.page.blue > div.questions > div.contributors {
+    width: 596px;
+    margin: 0 auto;
+}
+
+div.page.blue > div.questions > div.contributors > div.contributor {
     float: left;
     display: inline;
     width: 100px;
 }
 
-div.page.blue > div.questions > div.contributor > p {
+div.page.blue > div.questions > div.contributors > div.contributor > p {
     text-align: center;
     font-size: 12px;
 }
 
-div.page.blue > div.questions > div.contributor > p > img {
+div.page.blue > div.questions > div.contributors > div.contributor > p > img {
     width: 100%;
     border-radius: 50%;
 }
 
-div.page.blue > div.questions > div.contributor+div {
+div.page.blue > div.questions > div.contributors > div.contributor+div {
     margin-left: 24px;
 }
 
@@ -79,7 +91,6 @@ div.page > div.centered > h2 {
 
 nav.nav {
     float: right;
-    margin-top: 15px;
     line-height: 43px;
     font-family: 'Source Sans Pro', sans-serif;
 }
@@ -98,6 +109,11 @@ div.scala-logo-container {
     width: 600px;
     height: 600px;
     margin: 0 auto;
+}
+
+div.scala-logo-container > p {
+    margin: 0;
+    padding: 0;
 }
 
 h1#dotty {
@@ -138,6 +154,11 @@ div.centered-table > table {
     width: 100%;
 }
 
+div.centered-table+p {
+    text-align: center;
+    margin-top: 2em;
+}
+
 /* Decorator classes */
 .centered-text {
     text-align: center;
@@ -165,4 +186,68 @@ div.centered-table > table {
 .blue {
     background: #002B36;
     color: #fff;
+}
+
+/* Media query rules specifically for mobile devices */
+@media
+screen /* HiDPI device like Nexus 5 */
+and (max-device-width: 360px)
+and (max-device-height: 640px)
+and (-webkit-device-pixel-ratio: 3)
+,
+screen /* Most mobile devices  */
+and (max-device-width: 480px)
+and (orientation: portrait)
+,
+only screen /* iPhone 6 */
+and (max-device-width: 667px)
+and (-webkit-device-pixel-ratio: 2)
+{
+    div.page {
+        min-width: 0;
+    }
+
+    div.page > div.centered.questions > h1 {
+        font-size: 2.2em;
+    }
+
+    div.page.blue > div.questions > div.contributors {
+        width: 338px;
+    }
+
+    div.page.blue > div.questions > div.contributors > div.contributor {
+        width: 50px;
+    }
+
+    div.page.blue > div.questions > div.contributors > div.contributor+div {
+        margin-left: 22px;
+    }
+
+    div.scala-logo-container {
+        width: 80%;
+        height: 80%;
+    }
+
+    /* Feature */
+    div.centered-table > table > tbody > tr > td:nth-child(1) {
+        font-size: 0.8em;
+    }
+
+    /* Status */
+    div.centered-table > table > tbody > tr > td:nth-child(2) {
+        font-size: 0.8em;
+        text-align: right;
+    }
+
+    div#header {
+        width: 100%;
+    }
+
+    div#header > nav.nav {
+        float: none;
+    }
+
+    div#header > nav.nav.nav-pills .nav-item+.nav-item {
+        margin-left: 0;
+    }
 }

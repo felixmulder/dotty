@@ -2,7 +2,35 @@
 title: Dotty
 ---
 
-.. class:: page red
+.. class:: page red exactly-one-page
+
+    .. raw:: html
+
+        <div id="header">
+            <nav class="nav nav-pills">
+                <li class="nav-item">
+                    <a class="nav-link" href="#getting-started">
+                        Getting Started
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/lampepfl/dotty/wiki">
+                        Wiki
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#why-dotty">
+                        FAQ
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/lampepfl/dotty">
+                        <img id="github-logo" src="/images/github-logo.svg"/>
+                    </a>
+                </li>
+            </nav>
+        </div>
+
 
     .. class:: scala-logo-container
     .. image:: /images/scala-logo.svg
@@ -24,7 +52,7 @@ title: Dotty
             </i>
         </div>
 
-.. class:: page blue larger-page
+.. class:: page blue
 
     .. class:: centered questions
 
@@ -37,54 +65,61 @@ title: Dotty
         remove extraneous syntax (e.g. no XML literals), and try to boil down
         Scala's types into a smaller set of more fundamental constructors. The
         theory behind these constructors is researched in
-        `DOT<http://www.cs.uwm.edu/~boyland/fool2012/papers/fool2012_submission_3.pdf>`_,
+        `DOT<https://infoscience.epfl.ch/record/215280>`_,
         a calculus for dependent object types.
 
         =============================
         \- Is it the future of Scala?
         =============================
 
-        Yes, it will be - eventually.
+        .. class:: centered-text
+
+            Yes, it will be - eventually.
 
         =======================
         \- Who's working on it?
         =======================
 
-        .. class:: contributor
+        .. class:: contributors
 
-            .. image:: /images/martin.jpg
-            Martin Odersky
+            .. class:: contributor
 
-        .. class:: contributor
+                .. image:: /images/martin.jpg
+                Martin Odersky
 
-            .. image:: /images/petrashko.png
-            Dmitry Petrashko
+            .. class:: contributor
 
-        .. class:: contributor
+                .. image:: /images/petrashko.png
+                Dmitry Petrashko
 
-            .. image:: /images/smarter.jpg
-            Guillaume Martres
+            .. class:: contributor
 
-        .. class:: contributor
+                .. image:: /images/smarter.jpg
+                Guillaume Martres
 
-            .. image:: /images/fengyun.png
-            Liu Fengyun
+            .. class:: contributor
 
-        .. class:: contributor
+                .. image:: /images/fengyun.png
+                Liu Fengyun
 
-            .. image:: /images/felix.jpeg
-            Felix Mulder
+            .. class:: contributor
+
+                .. image:: /images/felix.jpeg
+                Felix Mulder
 
 
         .. class:: centered-text
-        And a long line of `contributors<https://github.com/lampepfl/dotty/graphs/contributors>`_!
+
+        And a long line of `contributors!<https://github.com/lampepfl/dotty/graphs/contributors>`_
 
         ================
         \- Can I use it?
         ================
 
-        `You can!<#getting-started>`_ But it currently comes with no guarantees
-        of stability and correctness.
+        .. class:: centered-text
+
+            `You can!<#getting-started>`_ But it currently comes with no guarantees
+            of stability and correctness.
 
         ================
         \- So, features?
@@ -144,13 +179,16 @@ title: Dotty
         \- I have more questions!
         =========================
 
-        That's great! We have more details on the `Github
-        Wiki<https://github.com/lampepfl/dotty/wiki>`_ and please join our `Gitter channel<https://gitter.im/lampepfl/dotty>`_!
+        .. class:: centered-text
+
+            That's great! We have more details on the `Github
+            Wiki<https://github.com/lampepfl/dotty/wiki>`_ and please join our `Gitter channel<https://gitter.im/lampepfl/dotty>`_!
 
 
 .. class:: page white
 
     .. class:: centered
+       :style: padding-top: 32px
 
          ===============
          Getting Started
@@ -200,6 +238,5 @@ title: Dotty
     <script src="https://cdn.jsdelivr.net/scrollreveal.js/3.1.4/scrollreveal.min.js"></script>
     <script>
         window.sr = ScrollReveal();
-        sr.reveal(".scala-logo-container",  { duration: 2000, delay: 100 });
-        sr.reveal(".contributor",  { duration: 500, delay: 100 });
+        sr.reveal(".scala-logo-container",  { duration: 2000, delay: 100, mobile: false });
     </script>
