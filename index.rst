@@ -77,6 +77,37 @@ title: Dotty
 
             Yes, it will be - eventually.
 
+        =============
+        Can I use it?
+        =============
+
+        .. class:: centered-text
+
+            `You can!<#getting-started>`_ But it currently comes with no guarantees
+            of stability.
+
+        =========================
+        Is there Scala 2 interop?
+        =========================
+
+        .. class:: centered-text
+
+            Dotty currently interops with libraries compiled with Scala 2.11 - but not 2.12
+
+        ==================================
+        How do I migrate my code to Dotty?
+        ==================================
+
+        An automated rewriting tool is planned for Dotty, more on this to
+        come. Scala 2 sources can be compiled to some degree by issuing:
+
+        .. code:: bright
+
+            ./bin/dotc -language:Scala2 file.scala
+
+        when compiling your program.
+
+
         ====================
         Who's working on it?
         ====================
@@ -117,14 +148,9 @@ title: Dotty
 
         And a long line of `contributors!<https://github.com/lampepfl/dotty/graphs/contributors>`_
 
-        =============
-        Can I use it?
-        =============
+.. class:: page teal
 
-        .. class:: centered-text
-
-            `You can!<#getting-started>`_ But it currently comes with no guarantees
-            of stability.
+    .. class:: centered questions
 
         =============
         So, features?
