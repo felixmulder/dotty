@@ -180,6 +180,15 @@ title: Dotty
         The complete list is available
         `here<https://github.com/lampepfl/dotty#what-are-the-features-that-could-make-me-consider-trying-it>`_.
 
+        ===============
+        Talks on Dotty?
+        ===============
+
+        * `Compilers are Databases<https://www.youtube.com/watch?v=WxyyJyB_Ssc>`_
+          by Martin Odersky (`slides<http://www.slideshare.net/Odersky/compilers-are-databases>`_)
+        * `Exploring the future of Scala<https://www.youtube.com/watch?v=aftdOFuVU1o>`_
+          by Dmitry Petrashko (`slides<https://d-d.me/scalaworld2015/#/>`_)
+
         ======================
         I have more questions!
         ======================
