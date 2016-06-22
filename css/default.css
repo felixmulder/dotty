@@ -78,6 +78,11 @@ div.page.teal a:visited {
 div.page.blue > div.questions > div.contributors {
     width: 596px;
     margin: 0 auto;
+    overflow: hidden;
+}
+
+div.page.blue > div.questions > div.contributors+div {
+    margin-top: 16px;
 }
 
 div.page.blue > div.questions > div.contributors > div.contributors-cell {
@@ -95,14 +100,20 @@ div.page.blue > div.questions > div.contributors > div.contributors-cell > div.c
     width: 100px;
 }
 
-div.page.blue > div.questions > div.contributors > div.contributors-cell > div.contributor > p {
+div.page.blue > div.questions > div.contributors > div.contributors-cell > div.contributor {
     text-align: center;
     font-size: 12px;
+    color: #fff;
 }
 
-div.page.blue > div.questions > div.contributors > div.contributors-cell > div.contributor > p > img {
+div.page.blue > div.questions > div.contributors > div.contributors-cell > div.contributor > a:hover {
+    opacity: 0.9;
+}
+
+div.page.blue > div.questions > div.contributors > div.contributors-cell > div.contributor > a > img {
     width: 100%;
     border-radius: 50%;
+    margin-bottom: 9px;
 }
 
 div.page.blue > div.questions > div.contributors > div.contributors-cell > div.contributor+div {

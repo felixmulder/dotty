@@ -9,6 +9,11 @@ title: Dotty
         <div id="header">
             <nav class="nav nav-pills">
                 <li class="nav-item">
+                    <a class="nav-link" href="#why-dotty">
+                        FAQ
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="#getting-started">
                         Getting Started
                     </a>
@@ -16,11 +21,6 @@ title: Dotty
                 <li class="nav-item">
                     <a class="nav-link" href="https://github.com/lampepfl/dotty/wiki">
                         Wiki
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#why-dotty">
-                        FAQ
                     </a>
                 </li>
                 <li class="nav-item">
@@ -116,33 +116,46 @@ title: Dotty
 
             .. class:: contributors-cell
 
-                .. class:: contributor
+                .. raw:: html
 
-                    .. image:: /images/martin.jpg
-                    Martin Odersky
+                    <div class="contributor">
+                        <a href="http://github.com/odersky">
+                            <img src="/images/martin.jpg">
+                        </a>
+                        Martin Odersky
+                    </div>
 
-                .. class:: contributor
+                    <div class="contributor">
+                        <a href="http://www.d-d.me">
+                            <img src="/images/petrashko.png">
+                        </a>
+                        Dmitry Petrashko
+                    </div>
 
-                    .. image:: /images/petrashko.png
-                    Dmitry Petrashko
-
-                .. class:: contributor
-
-                    .. image:: /images/smarter.jpg
-                    Guillaume Martres
+                    <div class="contributor">
+                        <a href="http://guillaume.martres.me/">
+                            <img src="/images/smarter.jpg">
+                        </a>
+                        Guillaume Martres
+                    </div>
 
             .. class:: contributors-cell
 
-                .. class:: contributor
+                .. raw:: html
 
-                    .. image:: /images/fengyun.png
-                    Liu Fengyun
+                    <div class="contributor">
+                        <a href="http://guillaume.martres.me/">
+                            <img src="/images/fengyun.png">
+                        </a>
+                        Liu Fengyun
+                    </div>
 
-                .. class:: contributor
-
-                    .. image:: /images/felix.jpeg
-                    Felix Mulder
-
+                    <div class="contributor">
+                        <a href="http://guillaume.martres.me/">
+                            <img src="/images/felix.jpeg">
+                        </a>
+                        Felix Mulder
+                    </div>
 
         .. class:: centered-text
 
