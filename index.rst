@@ -284,3 +284,7 @@ title: Dotty
          .. code-block:: bordered
 
              addSbtPlugin("com.felixmulder" % "sbt-dotty" % "0.1")
+
+         This plugin is based on the
+         `dotty-example-project<https://github.com/smarter/dotty-example-project>`_,
+         but let's you skip building dotty from scratch.
