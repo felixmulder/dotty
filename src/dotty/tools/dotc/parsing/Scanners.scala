@@ -23,7 +23,11 @@ object Scanners {
   val NoOffset: Offset = -1
 
   case class Comment(pos: Position, chrs: String) {
-    def isDocComment = chrs.startsWith("/**")
+    def isDocComment =
+      chrs.startsWith("/**") || isMarkdownComment
+
+    def isMarkdownComment =
+      chrs.startsWith("///")
   }
 
   type Token = Int
@@ -587,8 +591,23 @@ object Scanners {
           val pos = Position(start, charOffset, start)
           val comment = Comment(pos, flushBuf(commentBuf))
 
-          if (comment.isDocComment)
+          if (comment.isDocComment && !comment.isMarkdownComment) {
             docsPerBlockStack = (docsPerBlockStack.head :+ comment) :: docsPerBlockStack.tail
+          } else if (comment.isDocComment) {
+            val comments =
+              (docsPerBlockStack.head :+ comment)
+              .reverse
+              .takeWhile(_.isMarkdownComment)
+              .reverse
+
+            val newHead = docsPerBlockStack.head.dropRight(comments.length - 1)
+
+            val newComment =
+              Comment(pos, comments.map(_.chrs).mkString(sys.props("line.separator")))
+
+            docsPerBlockStack =
+              (newHead :+ newComment) :: docsPerBlockStack.tail
+          }
         }
 
         true
