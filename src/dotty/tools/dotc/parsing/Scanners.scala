@@ -565,6 +565,7 @@ object Scanners {
         appendToComment(ch)
         Scanner.this.nextChar()
       }
+      @tailrec
       def skipLine(): Unit = {
         nextChar()
         if ((ch != CR) && (ch != LF) && (ch != SU)) skipLine()
@@ -591,29 +592,55 @@ object Scanners {
           val pos = Position(start, charOffset, start)
           val comment = Comment(pos, flushBuf(commentBuf))
 
-          if (comment.isDocComment && !comment.isMarkdownComment) {
+          if (comment.isDocComment) {
+            assert(!comment.isMarkdownComment)
             docsPerBlockStack = (docsPerBlockStack.head :+ comment) :: docsPerBlockStack.tail
-          } else if (comment.isDocComment) {
-            val comments =
-              (docsPerBlockStack.head :+ comment)
-              .reverse
-              .takeWhile(_.isMarkdownComment)
-              .reverse
-
-            val newHead = docsPerBlockStack.head.dropRight(comments.length - 1)
-            val newPos = Position(comments.head.pos.start, pos.end)
-            val newComment =
-              Comment(newPos, comments.map(_.chrs).mkString(sys.props("line.separator")))
-
-            docsPerBlockStack =
-              (newHead :+ newComment) :: docsPerBlockStack.tail
           }
         }
 
         true
       }
+
+      def finishMarkdownComment(cmt: Option[Comment] = None): Boolean = {
+        def appendComment(from: Comment): Comment =
+          cmt.fold(from) { cmt =>
+            val newPos = Position(cmt.pos.start, from.pos.end)
+            Comment(newPos, cmt.chrs + from.chrs)
+          }
+
+        def nextLineIsMdComment: Boolean = {
+          val lookahead = lookaheadReader
+          lookahead.nextChar()
+
+          if (lookahead.ch == '/') {
+            lookahead.nextChar()
+            if (lookahead.ch == '/') {
+              lookahead.nextChar()
+              lookahead.ch == '/'
+            } else false
+          } else false
+        }
+
+        if (keepComments) {
+          val pos = Position(start, charOffset, start)
+          val comment = appendComment(Comment(pos, flushBuf(commentBuf)))
+
+          if (nextLineIsMdComment) {
+            skipLine()
+            finishMarkdownComment(Some(comment))
+          }
+          else docsPerBlockStack = (docsPerBlockStack.head :+ comment) :: docsPerBlockStack.tail
+        }
+
+        true
+      }
+
       nextChar()
-      if (ch == '/') { skipLine(); finishComment() }
+      if (ch == '/') {
+        nextChar();
+        if (ch == '/') { skipLine(); finishMarkdownComment() }
+        else { skipLine(); finishComment() }
+      }
       else if (ch == '*') { nextChar(); skipComment(); finishComment() }
       else false
     }

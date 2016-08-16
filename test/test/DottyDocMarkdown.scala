@@ -358,5 +358,36 @@ class DottyDocMarkdown extends DottyDocTest {
     }
   }
 
-  /** Should I test for multiple doc comments and then markdown-comment? */
+  @Test def valuesWithBogusDocstrings = {
+    val source =
+      """
+      |object Object {
+      |  /// val1
+      |  val val1 = 1
+      |
+      |  /// val2
+      |  val val2: Int = 2
+      |  /// bogus docstring
+      |
+      |  /// bogus docstring
+      |
+      |  /// val3
+      |  val val3: List[Int] = 1 :: 2 :: 3 :: Nil
+      |}
+      """.stripMargin
+
+    import dotty.tools.dotc.ast.untpd._
+    checkFrontend(source) {
+      case PackageDef(_, Seq(o: ModuleDef)) => {
+        o.impl.body match {
+          case (v1: MemberDef) :: (v2: MemberDef) :: (v3: MemberDef) :: Nil => {
+            checkDocString(v1.rawComment, "/// val1")
+            checkDocString(v2.rawComment, "/// val2")
+            checkDocString(v3.rawComment, "/// val3")
+          }
+          case _ => assert(false, "Incorrect structure inside object")
+        }
+      }
+    }
+  }
 } /* End class */
