@@ -14,7 +14,10 @@ class DottyDocParsingTests extends DottyDocTest {
 
     checkFrontend(source) {
       case PackageDef(_, Seq(c: TypeDef)) =>
-        assert(c.rawComment == None, "Should not have a comment, mainly used for exhaustive tests")
+        assert(
+          c.rawComment == None,
+          "Should not have a comment, mainly used for exhaustive tests"
+        )
     }
   }
 
@@ -81,7 +84,7 @@ class DottyDocParsingTests extends DottyDocTest {
     }
   }
 
-  @Test def SingleTraitWihoutPackage = {
+  @Test def singleTraitWihoutPackage = {
     val source = "/** Trait docstring */\ntrait Trait"
 
     checkFrontend(source) {
