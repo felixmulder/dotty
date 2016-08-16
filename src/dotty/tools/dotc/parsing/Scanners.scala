@@ -601,9 +601,9 @@ object Scanners {
               .reverse
 
             val newHead = docsPerBlockStack.head.dropRight(comments.length - 1)
-
+            val newPos = Position(comments.head.pos.start, pos.end)
             val newComment =
-              Comment(pos, comments.map(_.chrs).mkString(sys.props("line.separator")))
+              Comment(newPos, comments.map(_.chrs).mkString(sys.props("line.separator")))
 
             docsPerBlockStack =
               (newHead :+ newComment) :: docsPerBlockStack.tail
