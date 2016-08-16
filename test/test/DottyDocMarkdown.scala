@@ -390,4 +390,22 @@ class DottyDocMarkdown extends DottyDocTest {
       }
     }
   }
+
+  @Test def handleEmptyLineComment = {
+    val source =
+      """
+      |package a
+      |
+      |//
+      |/// Hello world!
+      |class Class(val x: String)
+      |//
+      |///
+      """.stripMargin
+
+    checkFrontend(source) {
+      case PackageDef(_, Seq(t @ TypeDef(name, _))) if name.toString == "Class" =>
+        checkDocString(t.rawComment, "/// Hello world!")
+    }
+  }
 } /* End class */

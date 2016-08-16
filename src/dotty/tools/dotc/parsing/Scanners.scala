@@ -637,8 +637,9 @@ object Scanners {
 
       nextChar()
       if (ch == '/') {
-        nextChar();
-        if (ch == '/') { skipLine(); finishMarkdownComment() }
+        val lookahead = lookaheadReader
+        lookahead.nextChar()
+        if (lookahead.ch == '/') { skipLine(); finishMarkdownComment() }
         else { skipLine(); finishComment() }
       }
       else if (ch == '*') { nextChar(); skipComment(); finishComment() }
