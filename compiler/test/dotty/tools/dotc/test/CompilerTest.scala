@@ -53,7 +53,7 @@ abstract class CompilerTest(val outputDir: String = "../out/") {
 //    "-Xprompt",
 //    "-explaintypes",
 //    "-Yshow-suppressed-errors",
-    "-pagewidth", "160"
+    "-pagewidth", "120"
   )
 
   // Default options for compilation both locally and on CI
