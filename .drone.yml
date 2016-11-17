@@ -1,0 +1,7 @@
+build:
+    compiler-junit:
+        image: felixmulder/dotty
+        commands: sbt -Ddotty.jenkins.build=yes -Dfile.encoding=UTF-8 update compile test
+    compiler-partest:
+        image: felixmulder/dotty
+        commands: sbt -Ddotty.jenkins.build=yes -Dfile.encoding=UTF-8 update compile "partest-only-no-bootstrap --show-diff --verbose"
