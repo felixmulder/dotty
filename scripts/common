@@ -1,8 +1,5 @@
 update() {
-  [[ -d $baseDir ]] || mkdir -p $baseDir
-  cd $baseDir
-
-  if [ ! -d $baseDir/$3 ]; then git clone "https://github.com/$1/$2.git" $3; fi
+  if [ ! -d $3 ]; then git clone "https://github.com/$1/$2.git" $3; fi
 
   cd $3
 
@@ -16,4 +13,5 @@ update() {
 
 export LC_ALL=en_US.UTF-8
 unset _JAVA_OPTIONS
-sbtArgs="-Ddotty.jenkins.build=yes -Dfile.encoding=UTF-8 -ivy $baseDir/ivy2 -Dsbt.global.base=$HOME/.sbt/0.13 -sbt-dir $HOME/.sbt/0.13"
+#sbtArgs="-Ddotty.jenkins.build=yes -Dfile.encoding=UTF-8 -ivy /drone/.ivy2 -Dsbt.global.base=$HOME/.sbt/0.13 -sbt-dir $HOME/.sbt/0.13"
+sbtArgs="-Ddotty.jenkins.build=yes -Dfile.encoding=UTF-8 -ivy /var/cache/drone/ivy2 -Dsbt.global.base=/drone/.sbt/0.13 -sbt-dir /drone/.sbt/0.13"
